@@ -1,0 +1,76 @@
+.side_bar {
+  box-sizing: border-box;
+  width:300px;
+  height: calc(100vh);
+  float: left;
+  background-color: #2f3e51;
+
+ .header {
+    width:260px;
+    height: 72px;
+    padding:0 20px 0 20px;
+    display: flex;
+    background-color: #253141;
+      &__name {
+        color: #ffffff;
+        font-size: 16px bold;
+        text-align: left;
+        padding: 20px;
+        a {
+        color: #ffffff;
+          &:link  {
+            text-decoration: none;
+          }
+          &:visited   {
+            text-decoration: none;
+          }
+          &:hover {
+            text-decoration: none;
+          }
+          &:active    {
+            text-decoration: none;
+          }
+        }
+      }
+      &__lists {
+          color: #ffffff;
+          text-align: right;
+          display: flex;
+          padding: 20px;
+        b {
+        .icon {
+          color: #ffffff;
+          text-decoration: none;
+        }
+        .list-right {
+          color: #ffffff;
+          text-decoration: none;
+          content: "\f044";
+        }
+        .list-left {
+          color: #ffffff;
+          text-decoration: none;
+          content: "\f013";
+        }
+       }
+      }
+     }
+}
+.group {
+ .group__group-name {
+  font-size: 15px;
+  color: #ffffff;
+  margin: 20px 0 5px;
+  padding: 0;
+  box-sizing: border-box;
+  display: block;
+ }
+ .group__latest-massage{
+  font-size: 11px;
+  color: #ffffff;
+  margin: 0 0 40px;
+  padding: 0;
+  box-sizing: border-box;
+  display: block;
+ }
+}
