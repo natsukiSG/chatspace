@@ -8,7 +8,7 @@
         Menber：
       .mainheader__left__members-member
         natsuki
-  %a{:href => "edit"}
+  = link_to "edit", class: "#"
     .main-header-btn-edit
       Edit
 
@@ -28,6 +28,6 @@
   %input{class: 'input-box__text', placeholder: 'type a message'}
   %label{class: "input-box__image"}
     = icon('far', 'image', class: 'input-box__image__file')
-    %input{:name => "datafile", :type => "file", style: "display: none"}/
+    %input{name: "datafile", type: "file", style: "display: none"}/
   .submit-btn
     Send
