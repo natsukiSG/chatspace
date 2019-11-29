@@ -1,0 +1,33 @@
+.mainchat
+.mainheader
+  .mainheader__left
+    .mainheader__left__text
+      test
+    .mainheader__left__box
+      .mainheader__left__members
+        Menber：
+      .mainheader__left__members-member
+        natsuki
+  %a{:href => "edit"}
+    .main-header-btn-edit
+      Edit
+
+.messages
+  .message
+    .upper-message
+      .upper-message__user-name
+        アイウエオ
+        カキクケコ
+      .upper-message__date
+        あああああ
+        いいいいい
+    .lower-message
+      aaaaa
+      bbbbb
+.form
+  %input{class: 'input-box__text', placeholder: 'type a message'}
+  %label{class: "input-box__image"}
+    = icon('far', 'image', class: 'input-box__image__file')
+    %input{:name => "datafile", :type => "file", style: "display: none"}/
+  .submit-btn
+    Send
