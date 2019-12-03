@@ -1,0 +1,34 @@
+.mainchat
+.mainheader
+  .mainheader__left
+    .mainheader__left__text
+      test
+    .mainheader__left__box
+      .mainheader__left__members
+        Menber：
+      .mainheader__left__members-member
+        natsuki
+  = link_to "edit", class: "#" do
+    .main-header-btn-edit
+      Edit
+
+.messages
+  = render @messages
+  .message
+    .upper-message
+      .upper-message__user-name
+        = message.user.name
+      .upper-message__date
+        = message.created_at.strftime("%Y/%m/%d %H:%M")
+    .lower-message
+      - if message.content.present?
+      %p.lower-message__content
+        = message.content
+    = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
+.form
+  %input{class: 'input-box__text', placeholder: 'type a message'}
+  %label{class: "input-box__image"}
+    = icon('far', 'image', class: 'input-box__image__file')
+    %input{name: "datafile", type: "file", style: "display: none"}/
+  .submit-btn
+    Send

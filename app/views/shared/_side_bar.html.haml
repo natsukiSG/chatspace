@@ -1,0 +1,19 @@
+.header 
+  %h3.header__name
+    = current_user.name
+    -# = link_to "chat-space", root_path
+  %ul.header__lists
+    %li.list-right
+      = link_to new_group_path do
+        %i.fa.fa-pen-square.icon
+    %li.list-left
+      = link_to edit_user_path(current_user) do
+        = icon('fas', 'cog', class: 'icon')
+.groups
+  - current_user.groups.each do |group|
+    .group 
+      = link_to group_messages_path(group) do
+        .group__group-name
+          = group.name
+        .group__latest-massage
+          = group.show_last_message

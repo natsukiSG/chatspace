@@ -1,0 +1,66 @@
+.side_bar {
+  width:300px;
+  height: calc(100vh);
+  float: left;
+  background-color: #2f3e51;
+ .header {
+    height: 100px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    background-color: #253141;
+      &__name {
+        display: flex;
+        color: #ffffff;
+        width: 100%;
+        font-size: 16px bold;
+        a {
+        color: #ffffff;
+          &:link  {
+            text-decoration: none;
+          }
+          &:visited   {
+            text-decoration: none;
+          }
+          &:hover {
+            text-decoration: none;
+          }
+          &:active    {
+            text-decoration: none;
+          }
+        }
+      }
+      &__lists {
+          color: #ffffff;
+          text-align: right;
+          display: flex;
+          padding: 20px;
+       .iconbotton{
+            color: #ffffff;
+            margin: 5px;   
+          }
+      }
+ }
+}
+.group {
+  height: calc(100vh -100px);
+  background-color: #2f3e51;
+  padding: 20px 20px 0;
+  overflow: scroll;
+  .group__group-name {
+    font-size: 15px;
+    color: #ffffff;
+    margin: 20px 0 5px;
+    padding: 0;
+    box-sizing: border-box;
+    display: block;
+  }
+  .group__latest-massage{
+    font-size: 11px;
+    color: #ffffff;
+    margin: 0 0 40px;
+    padding: 0;
+    box-sizing: border-box;
+    display: block;
+  }
+}
