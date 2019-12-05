@@ -1,24 +1,25 @@
 .mainheader
-  .mainheader__left
-    .mainheader__left__text
-      = @group.name
-    .mainheader__left__box
-      .mainheader__left__members
-        member:
-      .mainheader__left__members-member
-        - @group.users.each do |user|   
-          =user.name
-  = link_to edit_group_path(@group) do
-    .main-header-btn-edit
-      Edit
+  .mainheader__left
+    .mainheader__left__text
+      = @group.name
+    .mainheader__left__box
+      .mainheader__left__members
+        member:
+      .mainheader__left__members-member
+        - @group.users.each do |user|
+          =user.name
+  = link_to edit_group_path(@group) do
+    .main-header-btn-edit
+      Edit
 
 .messages
-  = render @messages
+  = render @messages 
 
 .form
-  %input{class: 'input-box__text', placeholder: 'type a message'}
-  %label{class: "input-box__image"}
-    = icon('far', 'image', class: 'input-box__image__file')
-    %input{name: "datafile", type: "file", style: "display: none"}/
-  .submit-btn
-    %input.submit-btn{"data-table-with" => "Send", :name => "comit", :type => "submit", :value => "Send"}/
+  = form_for [@group, @message] do |f|
+    = f.text_field :content, class: 'input-box__text', placeholder: 'type a message'
+    .form__mask
+      = f.label :image, class: 'input-box__image' do
+        = icon('far', 'image', class: 'icon')
+        = f.file_field :image, class: 'input-box__image__file'
+    = f.submit 'Send', class: 'submit-btn'
