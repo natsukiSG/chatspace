@@ -1,6 +1,7 @@
 $(function(){
   var reloadMessages = function() {
-    last_message_id = $('.message:last').data('message-id');
+    var last_message_id = $('.message:last').data('message_id');
+    console.log(last_message_id);
     $.ajax({
       url: "api/messages",
       type: 'get',
@@ -8,6 +9,7 @@ $(function(){
       data: {id: last_message_id}
     })
     .done(function(messages) {
+      console.log(messages)
       var insertHTML = '';
         messages.forEach(function (message){
         insertHTML = buildHTML(message);
@@ -15,35 +17,65 @@ $(function(){
       });
       $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
     })
-    .fail(function() {
-      alert("メッセージ送信に失敗しました");
-    });
+    // .fail(function() {
+    //   alert("メッセージ送信に失敗しました");
+    // });
   };
   
-  function buildHTML(message){
-    var image = message.image ? `<img class= "lower-message__image" src=${message.image} >` : ""; 
-    var html =  
-                `<div class="message" data-message-id = "${message.id}">
-                  <div class="upper-message">
-                    <div class="upper-message__user-name">
-                      ${message.name}
-                    </div>
-                    <div class="upper-message__date">
-                      ${message.created_at}
-                    </div>
-                  </div>
-                  <div class="lower-message">
-                      <p class="lower-message__content">
-                        ${message.content}
-                      </p>
-                      <p class="lower-message__image">
-                        ${image}
-                      </p>
-                  </div>
-                </div>` 
-              
-   return html;
-  }
+  var buildHTML = function(message) {
+    if (message.content && message.image) {
+      //data-idが反映されるようにしている
+      var html = `<div class="message" data-message_id=` + message.id + `>` +
+        `<div class="upper-message">` +
+          `<div class="upper-message__user-name">` +
+            message.name +
+          `</div>` +
+          `<div class="upper-message__date">` +
+            message.created_at +
+          `</div>` +
+        `</div>` +
+        `<div class="lower-message">` +
+          `<p class="lower-message__content">` +
+            message.content +
+          `</p>` +
+          `<img src="` + message.image + `" class="lower-message__image" >` +
+        `</div>` +
+      `</div>`
+    } else if (message.content) {
+      //同様に、data-idが反映されるようにしている
+      var html = `<div class="message" data-message_id=` + message.id + `>` +
+        `<div class="upper-message">` +
+          `<div class="upper-message__user-name">` +
+            message.name +
+          `</div>` +
+          `<div class="upper-message__date">` +
+            message.created_at +
+          `</div>` +
+        `</div>` +
+        `<div class="lower-message">` +
+          `<p class="lower-message__content">` +
+            message.content +
+          `</p>` +
+        `</div>` +
+      `</div>`
+    } else if (message.image) {
+      //同様に、data-idが反映されるようにしている
+      var html = `<div class="message" data-message_id=` + message.id + `>` +
+        `<div class="upper-message">` +
+          `<div class="upper-message__user-name">` +
+            message.name +
+          `</div>` +
+          `<div class="upper-message__date">` +
+            message.created_at +
+          `</div>` +
+        `</div>` +
+        `<div class="lower-message">` +
+          `<img src="` + message.image + `" class="lower-message__image" >` +
+        `</div>` +
+      `</div>`
+    };
+    return html;
+  };
 
 
 $('#new_message').on('submit', function(e){
@@ -74,6 +106,5 @@ $('#new_message').on('submit', function(e){
       $('.submit-btn').prop('disabled', false);
   })
 })
-
-setInterval(reloadMessages, 7000);
+setInterval(reloadMessages, 3000);
 });
